@@ -1,0 +1,30 @@
+parameters:
+#    ku_sf2_utils.example.class: KuSf2\Bundle\UtilsBundle\Example
+    ku_sf2_utils.twig.html_extension.class: KuSf2\Bundle\UtilsBundle\Twig\Extension\HtmlExtension
+    ku_sf2_utils.twig.dropdown_extension.class: KuSf2\Bundle\UtilsBundle\Twig\Extension\DropdownExtension
+    ku_dropdown_factory.class: KuSf2\Bundle\UtilsBundle\Dropdown\DropdownFactory
+
+services:
+#    ku_sf2_utils.example:
+#        class: %ku_sf2_utils.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    ku_sf2.twig.html_extension:
+        class: %ku_sf2_utils.twig.html_extension.class%
+        arguments:
+            - "@service_container"
+        tags:
+            - {name: twig.extension}
+            
+    ku_sf2_utils.twig.dropdown_extension:
+        class: %ku_sf2_utils.twig.dropdown_extension.class%
+        arguments:
+            - "@ku_dropdown_factory"
+        tags:
+            - {name: twig.extension}
+            
+    ku_dropdown_factory:
+        class: %ku_dropdown_factory.class%
+        arguments:
+            - "@twig"
+            - "@kernel"
+            - "@service_container"

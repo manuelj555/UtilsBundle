@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+{{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+{{ js('bundles/prizeadmin/js/jquery.js') }}
+{% endblock %}
+
+{% block body %}
+{% block content %}
+{% endblock %}
+{% endblock %}

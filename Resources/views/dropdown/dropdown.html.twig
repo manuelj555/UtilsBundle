@@ -1,0 +1,21 @@
+{% spaceless %}
+<select id="{{ id }}" class="ku_dropdown" onchange="new Function(this.value)()">
+    {% for item in items %}
+        <option {%- if item.description -%}
+                    data-description="{{ item.description }}"
+                {%- endif %}
+                {% if item.image -%}
+                    data-imagesrc="{{ asset(item.image) }}"
+                {%- endif %}
+                {%- if item.hasHref() -%}
+                    value="window.location = '{{ item.href }}'"
+                {%- elseif item.hasOnClick() -%}
+                    value="{{ item.onClick }}"
+                {%- else -%}
+                    value="return false"
+                {%- endif -%}>
+            {{ item.text }}
+        </option>
+    {% endfor %}
+</select>
+{% endspaceless %}
