@@ -1,5 +1,5 @@
 {
-    "name": "manuelj555/utils",
+    "name": "manuelj555/sfutils",
     "description": "Bundle que ofrece utilidades para aplicaciones con symfony2",
     "require": {
         "php": ">=5.3.3"
